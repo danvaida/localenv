@@ -1,0 +1,28 @@
+{{ ansible_managed | comment }}
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH="/usr/local/sbin:$PATH"
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+export GPG_TTY=$(tty)
+#export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+[[ -n "$SSH_CONNECTION" ]] && \
+  export PINENTRY_USER_DATA="USE_CURSES=1"
+
+HISTFILESIZE=5000
+HISTSIZE=5000
+
+[ -f ~/.bashrc ] && source ~/.bashrc
+
+[ -f /usr/local/sbin/aws-bash-completion.bash ] && \
+  . /usr/local/sbin/aws-bash-completion.bash
+
+[ -f /usr/local/sbin/profile-manager.zsh ] && \
+  . /usr/local/sbin/profile-manager.zsh
+
+[ -f ~/.iterm2_shell_integration.bash ] && \
+  . ~/.iterm2_shell_integration.bash
+
+[ -f ~/.git-completion.bash ] && \
+  source ~/.git-completion.bash
+
+[ -f ~/.git-prompt.bash ] && \
+  source ~/.git-prompt.bash

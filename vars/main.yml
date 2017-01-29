@@ -1,0 +1,104 @@
+---
+aws_dot_files:
+  - src: './templates/aws/config'
+    dest: '~/.aws/config'
+  - src: './templates/aws/credentials'
+    dest: '~/.aws/credentials'
+
+aws_profile_files:
+  - link: 'https://raw.githubusercontent.com/danvaida/myutilitybelt/master/aws/aws-bash-completion.bash'
+  - link: 'https://raw.githubusercontent.com/danvaida/myutilitybelt/master/aws/profile-manager.zsh'
+aws_profile_dest: '/usr/local/sbin'
+
+bash_dot_files:
+  - src: './templates/bash/.bash_aliases'
+    dest: '~/.bash_aliases'
+    mode: '0644'
+  - src: './templates/bash/.bash_profile'
+    dest: '~/.bash_profile'
+    mode: '0644'
+  - src: './files/bash/.bash_sessions_disable'
+    dest: '~/.bash_sessions_disable'
+    mode: '0644'
+  - src: './templates/bash/.bashrc'
+    dest: '~/.bashrc'
+    mode: '0644'
+  - src: './templates/bash/.inputrc'
+    dest: '~/.inputrc'
+    mode: '0644'
+  - src: './templates/bash/.profile'
+    dest: '~/.profile'
+    mode: '0644'
+
+git_dot_files:
+  - src: './files/git/.git-completion.bash'
+    dest: '~/.git-completion.bash'
+    mode: '0755'
+  - src: './files/git/.git-prompt.sh'
+    dest: '~/.git-prompt.sh'
+    mode: '0755'
+
+dot_files: "{{ aws_dot_files + bash_dot_files + git_dot_files }}"
+
+homebrew_packages:
+  - asciidoc
+  - autoconf
+  - automake
+  - cadaver
+  - crystal-lang
+  - curl
+  - docbook
+  - docker
+  - fdupes
+  - gdbm
+  - gettext
+  - git
+  - gnu-tar
+  - htop
+  - iftop
+  - mc
+  - mtr
+  - mutt
+  - mysql
+  - neon
+  - nethogs
+  - nmap
+  - openssl
+  - pkg-config
+  - pwgen
+  - python
+  - readline
+  - ruby
+  - sqlite
+  - ssh-copy-id
+  - tig
+  - tree
+  - vim
+  - wget
+
+homebrew_cask_packages:
+  - 1password
+  - clipmenu
+  - dropbox
+  - franz
+  - firefox
+  - flux
+  - gimp
+  - google-chrome
+  - hipchat
+  - istumbler
+  - iterm2
+  - openoffice
+  - opera
+  - rambox
+  - skype
+  - slack
+  - teamviewer
+  - time-out
+  - torbrowser
+  - tunnelblick
+  - viber
+  - virtualbox
+  - virtualbox-extension-pack
+  - vlc
+  - whatsapp

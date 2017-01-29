@@ -1,0 +1,85 @@
+---
+- name: Packages
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - './vars/main.yml'
+    - './vars/secrets.yml'
+  tasks:
+    - name: Installing Homebrew packages
+      homebrew:
+        name: "{{ item }}"
+        state: latest
+        update_homebrew: True
+      with_items: "{{ homebrew_packages }}"
+      tags:
+        - packages
+        - homebrew
+
+    - name: Installing Homebrew (Cask) packages
+      homebrew_cask:
+        name: "{{ item }}"
+        install_options: "{{ item.install_opts | default('appdir=/Applications') }}"
+        state: installed
+        update_homebrew: True
+      with_items: "{{ homebrew_cask_packages }}"
+      tags:
+        - packages
+        - homebrew
+        - homebrew_cask
+
+- name: Dot files
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars_files:
+    - './vars/main.yml'
+    - './vars/secrets.yml'
+  tags: dotfiles
+  tasks:
+    - name: Checking the existence of the dir structure for the dot files
+      stat:
+        path: "{{ item.dest | dirname }}"
+      register: dot_files_stats
+      with_items: "{{ dot_files }}"
+
+    - name: Creating directory structure for dot files
+      file:
+        path: "{{ item.item.dest | dirname }}"
+        state: directory
+        recurse: True
+      when:
+        - dot_files_stats is defined
+        - not item.stat.exists
+      with_items: "{{ dot_files_stats.results }}"
+
+    - name: Templating dot files
+      template:
+        src: "{{ item.src }}.j2"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode | default(0600) }}"
+        backup: True
+      with_items: "{{ dot_files }}"
+      when: "'templates' in item.src | dirname"
+
+    - name: Copying dot files
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: "{{ item.mode | default(0600) }}"
+        backup: True
+      with_items: "{{ dot_files }}"
+      when: "'files' in item.src | dirname"
+
+    - name: Creating the aws-profile tool dir
+      file:
+        path: "{{ aws_profile_dest }}"
+        state: directory
+
+    - name: Fetching the aws-profile tool
+      get_url:
+        url: "{{ item.link }}"
+        dest: "{{ aws_profile_dest }}/{{ item.link | basename }}"
+        mode: '0755'
+      with_items: "{{ aws_profile_files }}"

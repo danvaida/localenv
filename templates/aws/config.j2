@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+{% for profile in aws_profiles %}
+
+[profile {{ profile.name }}]
+region=eu-central-1
+output=json
+[preview]
+cloudfront=true
+{% endfor %}

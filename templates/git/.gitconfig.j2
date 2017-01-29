@@ -1,0 +1,22 @@
+{{ ansible_managed | comment }}
+[user]
+  name = Dan Vaida
+  email = me@danvaida.com
+  signingkey = 703B840C
+
+[push]
+  default = matching
+
+[pull]
+  rebase = true
+
+[commit]
+  gpgsign = true
+
+[core]
+  excludesfile = ~/.gitignore_global
+
+[alias]
+  fo = fetch origin
+  pom = push origin master
+  st = status
