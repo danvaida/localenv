@@ -60,7 +60,6 @@ homebrew_packages:
   - mtr
   - mutt
   - mysql
-  - neon
   - nethogs
   - nmap
   - openssl
@@ -78,9 +77,7 @@ homebrew_packages:
 
 homebrew_cask_packages:
   - 1password
-  - clipmenu
-  - dropbox
-  - franz
+  - clipy
   - firefox
   - flux
   - gimp
@@ -90,6 +87,7 @@ homebrew_cask_packages:
   - iterm2
   - openoffice
   - opera
+  - osxfuse
   - rambox
   - skype
   - slack
