@@ -88,3 +88,10 @@
         dest: "{{ aws_profile_dest }}/{{ item.link | basename }}"
         mode: '0755'
       with_items: "{{ aws_profile_files }}"
+
+    - name: Installing Vim plugin(s)
+      git:
+        repo: "https://github.com/{{ item }}.git"
+        dest: "~/.vim/plugged/{{ item | basename }}"
+      with_items: "{{ vim_plugins }}"
+      tags: vim_plugins
