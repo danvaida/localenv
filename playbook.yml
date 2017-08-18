@@ -1,8 +1,6 @@
 ---
 - name: Packages
   hosts: localhost
-  connection: local
-  gather_facts: False
   vars_files:
     - './vars/main.yml'
     - './vars/secrets.yml'
@@ -40,8 +38,6 @@
 
 - name: Dot files
   hosts: localhost
-  connection: local
-  gather_facts: False
   vars_files:
     - './vars/main.yml'
     - './vars/secrets.yml'
