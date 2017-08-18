@@ -40,6 +40,9 @@ git_dot_files:
 
 dot_files: "{{ aws_dot_files + bash_dot_files + git_dot_files }}"
 
+homebrew_taps:
+  - caskroom/fonts
+
 homebrew_packages:
   - asciidoc
   - autoconf
@@ -91,6 +94,7 @@ homebrew_cask_packages:
   - rambox
   - skype
   - slack
+  - terminus
   - teamviewer
   - time-out
   - torbrowser
