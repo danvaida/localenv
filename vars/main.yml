@@ -93,6 +93,7 @@ homebrew_cask_packages:
   - clipy
   - docker
   - firefox
+  - font-terminus
   - flux
   - gimp
   - google-chrome
@@ -105,7 +106,6 @@ homebrew_cask_packages:
   - rambox
   - skype
   - slack
-  - terminus
   - teamviewer
   - time-out
   - torbrowser
