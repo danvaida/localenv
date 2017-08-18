@@ -114,7 +114,6 @@ homebrew_cask_packages:
   - virtualbox
   - virtualbox-extension-pack
   - vlc
-  - whatsapp
 
 vim_plugins:
   - scrooloose/nerdtree
