@@ -62,7 +62,6 @@ homebrew_packages:
   - crystal-lang
   - curl
   - docbook
-  - docker
   - fdupes
   - gdbm
   - gettext
@@ -92,6 +91,7 @@ homebrew_packages:
 homebrew_cask_packages:
   - 1password
   - clipy
+  - docker
   - firefox
   - flux
   - gimp
