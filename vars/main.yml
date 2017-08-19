@@ -37,6 +37,9 @@ git_dot_files:
   - src: './files/git/.git-prompt.sh'
     dest: '~/.git-prompt.sh'
     mode: '0755'
+  - src: './templates/git/.gitconfig'
+    dest: '~/.gitconfig'
+    mode: '0644'
 
 vim_dot_files:
   - src: './files/.vim/autoload/plug.vim'
