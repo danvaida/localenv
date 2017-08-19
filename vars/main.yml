@@ -99,6 +99,7 @@ homebrew_cask_packages:
   - font-terminus
   - flux
   - gimp
+  - gpgtools
   - google-chrome
   - hipchat
   - istumbler
